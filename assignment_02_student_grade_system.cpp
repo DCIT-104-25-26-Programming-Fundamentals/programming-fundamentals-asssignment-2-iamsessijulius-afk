@@ -41,8 +41,58 @@
 
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
 
+
+// #include <iostream>
+// bool isPrime(int number) {
+//   if (number < 2) {
+//     return false;
+//   }
+//   for (int i = 2; i < number; ++i) {
+//     if (number % i == 0 ) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+// int main() {
+//   int number;
+//   std::cout << "Enter a number: ";
+//   std::cin >> number;
+//   if (isPrime(number)) {
+//     std::cout << number << " is a prime number." << std::endl;
+//   } else {
+//     std::cout << number << " is not a prime number." << std::endl;
+//   }
+//   return 0;
+// }
 #include <iostream>
-using namespace std;
+#include <string>
+std::string studentGrade(int score) {
+  if (score < 0 || score > 100) {
+    return "Invalid";
+  } else if (score >= 80) {
+    return "A";
+  } else if (score >= 70) {
+    return "B";
+  } else if (score >= 60) {
+    return "C";
+  } else if (score >= 50) {
+    return "D";
+  } else {
+    return "F";
+  }
+}
+int main() {
+  int score;
+  std::cout << "Enter the student's score (0-100): ";
+  std::cin >> score;
+  std::string grade = studentGrade(score);
+  if (grade == "Invalid") {
+    std::cout << "Invalid score entered." << std::endl;
+  } else {
+    std::cout << "The student's grade is: " << grade << std::endl;
+  }
+  return 0;
+}
 
