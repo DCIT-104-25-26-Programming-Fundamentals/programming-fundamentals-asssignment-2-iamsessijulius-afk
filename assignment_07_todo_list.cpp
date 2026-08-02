@@ -73,10 +73,82 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
+std::vector<std::string> tasks;
+void addtask() {
+  std::string task;
+  std::cout << "Enter task: ";
+  std::getline(std::cin >> std::ws, task);
+  tasks.push_back(task);
+  std::cout << "Task added:\""<< task <<"\"\n\n";
+}
+void viewtasks() {
+  if (tasks.empty()) {
+    std::cout << "No tasks available.\n\n";
+    return;
+  }
+  std::cout << "Your Tasks:\n";
+  for (size_t i = 0; i < tasks.size(); ++i) {
+    std::cout << (i + 1) << ". " << tasks[i] << "\n";
+  }
+  std::cout << "\n";
+}
+void removetask() {
+  if (tasks.empty()) {
+    std::cout << "No tasks to remove.\n\n";
+    return;
+  }
+  int taskNum;
+  std::cout << "Enter task number to remove: ";
+  if (!(std::cin >> taskNum)) {
+    std::cin.clear(); 
+    std::cin.ignore(10000, '\n');
+    std::cout << "Invalid input. Please enter a valid task number.\n\n";
+    return;
+  }
+  if (taskNum >= 1 && taskNum <= static_cast<int>(tasks.size())) {
+    std::string removed = tasks[taskNum - 1];
+    tasks.erase(tasks.begin() + (taskNum - 1));
+    std::cout << "Task \"" << removed << "\" removed.\n\n";
+  } else {
+    std::cout << "Invalid task number.\n\n";
+  }
+}
+void showmenu() {
+  std::cout << "=======================\n";
+  std::cout << "  TO-DO LIST MENU\n";
+  std::cout << "=======================\n";
+  std::cout << "1. Add Task\n";
+  std::cout << "2. View Tasks\n";
+  std::cout << "3. Delete Task\n";
+  std::cout << "4. Quit\n";
+}
+int main() {
+  int choice;
+  while (true) {
+    showmenu();
+    std::cout << "Enter your choice: ";
+    if (!(std::cin >> choice)) {
+      std::cin.clear(); 
+      std::cin.ignore(10000, '\n');
+      std::cout << "Invalid input. Please enter a number between 1 and 4.\n\n";
+      continue;
+    }
+    if (choice == 1) {
+      addtask();
+    } else if (choice == 2) {
+      viewtasks();
+    } else if (choice == 3) {
+      removetask();
+    } else if (choice == 4) {
+      std::cout << "Exiting the program. Goodbye!\n";
+      break;
+    } else {
+      std::cout << "Invalid choice. Please select a number between 1 and 4.\n\n";
+    }
+  }
+  return 0;
+} 
 
