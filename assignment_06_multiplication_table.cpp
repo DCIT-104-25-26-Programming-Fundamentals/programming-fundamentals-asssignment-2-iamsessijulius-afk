@@ -52,8 +52,41 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
-using namespace std;
-
+void singleTable() {
+  int num;
+  std::cout << "Enter a number: ";
+  std::cin >> num;
+  if (num <= 0) {
+    std::cout << "Please enter a positive number.\n";
+    return;
+  }
+  std::cout << "\nMultiplication Table for " << num << ":\n";
+  for (int i = 1; i <= 12; ++i) {
+    std::cout << num << " x " << i << " = " << (num * i) << "\n";
+  } 
+}
+void tablesUpToN() {
+  int n;
+  std::cout << "Enter a number N: ";
+  std::cin >> n;
+  if (n <= 0) {
+    std::cout << "Please enter a positive number.\n";
+    return;
+  }
+  for (int num = 1; num <= n; ++num) {
+    std::cout << "\nMultiplication Table for " << num << ":\n";
+    for (int j = 1; j <= 12; ++j) {
+      std::cout << num << " x " << j << " = " << (num * j) << "\n";
+    }
+    if (num < n) {
+      std::cout << "-----------------------\n";
+    }
+  }
+}
+int main() {
+  singleTable();
+  std::cout << "\n";
+  tablesUpToN();
+  return 0;
+}
