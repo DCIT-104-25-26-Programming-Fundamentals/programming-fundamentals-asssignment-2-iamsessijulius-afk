@@ -37,8 +37,56 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
-using namespace std;
-
+#include <vector>
+int getsum(const std::vector<int>& numbers) {
+  int total = 0;
+  for (int number : numbers) {
+    total += number;
+  }
+  return total;
+}
+double getaverage(const std::vector<int>& numbers) {
+  int total = getsum(numbers);
+  return (double)total / numbers.size();
+  }
+  int getmax(const std::vector<int>& numbers) {
+    int highest = numbers[0];
+    for (int number : numbers) {
+      if (number > highest) {
+        highest = number;
+      }
+    }
+    return highest;
+}
+int getmin(const std::vector<int>& numbers) {
+  int lowest = numbers[0];
+  for (int number : numbers) {
+    if (number < lowest) {
+      lowest = number;
+    }
+  }
+  return lowest;
+}
+int main() {
+  int count;
+  std::cout << "How many numbers? ";
+  std::cin >> count;
+  if (count <= 0) {
+    std::cout << "Please enter a positive number." << std::endl;
+    return 0;
+  }
+  std::vector<int> numbers;
+  for (int i = 1; i < count; ++i) {
+    int val;
+    std::cout << "Enter number " << i << ": ";
+    std::cin >> val;
+    numbers.push_back(val);
+  }
+  std::cout << "\nResults:" << std::endl;
+  std::cout << "Sum: " << getsum(numbers) << std::endl;
+  std::cout << "Average: " << getaverage(numbers) << std::endl;
+  std::cout << "Maximum: " << getmax(numbers) << std::endl;
+  std::cout << "Minimum: " << getmin(numbers) << std::endl;
+  return 0;
+}
