@@ -46,8 +46,48 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
-// =============================================================================
-
 #include <iostream>
-using namespace std;
-
+void printFirstNTerms() {
+  int n; 
+  std::cout << "How many terms? ";
+  std::cin >> n;
+  if (n <= 0) {
+    std::cout << "Please enter a positive number.\n";
+    return;
+}
+long long a = 0, b = 1;
+std::cout << "Fibonacci Series: ";
+for (int i = 0; i < n; ++i) {
+  std::cout << a << (i == n - 1 ? "" : " ");
+  long long next = a + b;
+    a = b;
+    b = next;
+  }
+  std::cout << "\n";
+}
+void checkIfFibonacci() {
+  long long num;
+  std::cout << "Enter a number to check:";
+  std::cin >> num;
+  if (num < 0) {
+    std::cout << "Please enter a non-negative number.\n";
+    return;
+  }
+  long long a = 0, b = 1;
+  while (a < num) {
+    long long next = a + b;
+    a = b;
+    b = next;
+  }
+  if (a == num) {
+    std::cout << num << " is in the Fibonacci series.\n";
+  } else {
+    std::cout << num << " is not in the Fibonacci series.\n";
+  }
+}
+int main() {
+  printFirstNTerms();
+  std::cout << "\n";
+  checkIfFibonacci();
+  return 0; 
+}
